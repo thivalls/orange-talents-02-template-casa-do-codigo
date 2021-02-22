@@ -1,7 +1,5 @@
 package com.zup.cdc.author;
 
-import com.zup.cdc.author.unused.AuthorRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
