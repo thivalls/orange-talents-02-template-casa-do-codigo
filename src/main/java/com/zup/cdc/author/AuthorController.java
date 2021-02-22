@@ -1,22 +1,29 @@
 package com.zup.cdc.author;
 
+import com.zup.cdc.author.unused.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/authors")
 public class AuthorController {
-    @Autowired
-    private AuthorRepository authorRepository;
+
+    @PersistenceContext
+    private EntityManager em;
 
     @PostMapping
-    public void store(@RequestBody @Valid FormRequestDTO form) {
+    @Transactional
+    public String store(@RequestBody @Valid FormRequestDTO form) {
         Author author = form.makeAuthor();
-        authorRepository.save(author);
+        em.persist(author);
+        return author.toString();
     }
 }
