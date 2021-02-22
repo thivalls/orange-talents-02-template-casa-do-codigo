@@ -2,6 +2,7 @@ package com.zup.cdc.author;
 
 import org.hibernate.validator.constraints.Length;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,8 +19,17 @@ public class Author {
     private Long id;
     private @NotBlank String name;
     private @NotBlank @Length(max = 400)String description;
-    private @NotBlank @Email String email;
+
+    @Column(unique=true)
+    @NotBlank
+    @Email
+    private String email;
+
     private LocalDateTime createdAt = LocalDateTime.now();
+
+    @Deprecated
+    public Author() {
+    }
 
     public Author(@NotBlank String name, @NotBlank @Length(max = 400) String description, @NotBlank @Email String email) {
         this.name = name;

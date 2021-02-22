@@ -23,7 +23,11 @@ public class FormRequestDTO {
         this.email = email;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public Author makeAuthor() {
-        return new Author(this.name, this.email, this.description);
+        return new Author(this.name, this.description, this.email);
     }
 }

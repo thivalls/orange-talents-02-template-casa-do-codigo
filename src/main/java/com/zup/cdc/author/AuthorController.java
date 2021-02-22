@@ -1,5 +1,9 @@
 package com.zup.cdc.author;
 
+import com.zup.cdc.author.validators.CustomUniqueEmailValidator;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +20,14 @@ public class AuthorController {
 
     @PersistenceContext
     private EntityManager em;
+
+    @Autowired
+    private CustomUniqueEmailValidator customUniqueEmailValidator;
+
+    @InitBinder
+    public void init(WebDataBinder binder) {
+        binder.addValidators(customUniqueEmailValidator);
+    }
 
     @PostMapping
     @Transactional
