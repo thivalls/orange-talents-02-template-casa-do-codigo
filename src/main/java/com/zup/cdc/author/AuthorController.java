@@ -21,13 +21,13 @@ public class AuthorController {
     @PersistenceContext
     private EntityManager em;
 
-    @Autowired
-    private CustomUniqueEmailValidator customUniqueEmailValidator;
-
-    @InitBinder
-    public void init(WebDataBinder binder) {
-        binder.addValidators(customUniqueEmailValidator);
-    }
+//    @Autowired
+//    private CustomUniqueEmailValidator customUniqueEmailValidator;
+//
+//    @InitBinder
+//    public void init(WebDataBinder binder) {
+//        binder.addValidators(customUniqueEmailValidator);
+//    }
 
     @PostMapping
     @Transactional

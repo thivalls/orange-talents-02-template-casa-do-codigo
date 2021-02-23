@@ -20,13 +20,13 @@ public class CategoryController {
     @PersistenceContext
     private EntityManager em;
 
-    @Autowired
-    private CustomUniqueCategoryValidator customUniqueCategoryValidator;
-
-    @InitBinder
-    public void init(WebDataBinder binder) {
-        binder.addValidators(customUniqueCategoryValidator);
-    }
+//    @Autowired
+//    private CustomUniqueCategoryValidator customUniqueCategoryValidator;
+//
+//    @InitBinder
+//    public void init(WebDataBinder binder) {
+//        binder.addValidators(customUniqueCategoryValidator);
+//    }
 
     @PostMapping
     @Transactional
