@@ -49,4 +49,12 @@ public class Author {
                 ", createdAt=" + createdAt +
                 '}';
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }

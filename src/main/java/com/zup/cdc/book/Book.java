@@ -72,6 +72,46 @@ public class Book {
         this.author = author;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getBrief() {
+        return brief;
+    }
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public int getPages() {
+        return pages;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public LocalDate getPublishDate() {
+        return publishDate;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -85,5 +125,9 @@ public class Book {
                 ", category=" + category +
                 ", author=" + author +
                 '}';
+    }
+
+    public BookResponse toBookResponse() {
+        return new BookResponse(this);
     }
 }
