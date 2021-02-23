@@ -1,6 +1,6 @@
 package com.zup.cdc.author;
 
-import com.zup.cdc.validators.UniqueField;
+import com.zup.cdc.shared.validators.UniqueField;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;

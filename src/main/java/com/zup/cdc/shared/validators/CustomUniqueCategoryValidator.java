@@ -1,4 +1,4 @@
-package com.zup.cdc.validators;
+package com.zup.cdc.shared.validators;
 
 import com.zup.cdc.category.Category;
 import com.zup.cdc.category.CategoryRepository;

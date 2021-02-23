@@ -1,6 +1,6 @@
 package com.zup.cdc.category;
 
-import com.zup.cdc.validators.UniqueField;
+import com.zup.cdc.shared.validators.UniqueField;
 
 import javax.validation.constraints.NotBlank;
 

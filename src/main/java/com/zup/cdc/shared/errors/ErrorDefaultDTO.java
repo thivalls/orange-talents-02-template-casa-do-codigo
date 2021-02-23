@@ -1,9 +1,4 @@
-package com.zup.cdc.errors;
-
-import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
-
-import java.util.List;
+package com.zup.cdc.shared.errors;
 
 public class ErrorDefaultDTO {
     private String field;

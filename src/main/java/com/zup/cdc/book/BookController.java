@@ -1,4 +1,4 @@
-package com.zup.cdc.author;
+package com.zup.cdc.book;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,25 +11,17 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/authors")
-public class AuthorController {
-
+@RequestMapping("books")
+public class BookController {
     @PersistenceContext
     private EntityManager em;
 
-//    @Autowired
-//    private CustomUniqueEmailValidator customUniqueEmailValidator;
-//
-//    @InitBinder
-//    public void init(WebDataBinder binder) {
-//        binder.addValidators(customUniqueEmailValidator);
-//    }
-
     @PostMapping
     @Transactional
-    public String store(@RequestBody @Valid AuthorRequestDTO form) {
-        Author author = form.makeAuthor();
-        em.persist(author);
-        return author.toString();
+    public String store(@RequestBody @Valid BookRequestDTO request) {
+        Book book = request.toBook(em);
+        em.persist(book);
+
+        return book.toString();
     }
 }

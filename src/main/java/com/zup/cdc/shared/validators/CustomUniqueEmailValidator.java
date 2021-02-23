@@ -1,4 +1,4 @@
-package com.zup.cdc.validators;
+package com.zup.cdc.shared.validators;
 
 import com.zup.cdc.author.Author;
 import com.zup.cdc.author.AuthorRepository;
