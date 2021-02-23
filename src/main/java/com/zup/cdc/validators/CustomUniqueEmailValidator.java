@@ -1,8 +1,8 @@
-package com.zup.cdc.author.validators;
+package com.zup.cdc.validators;
 
 import com.zup.cdc.author.Author;
 import com.zup.cdc.author.AuthorRepository;
-import com.zup.cdc.author.FormRequestDTO;
+import com.zup.cdc.author.AuthorRequestDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -17,7 +17,7 @@ public class CustomUniqueEmailValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> aClass) {
-        return FormRequestDTO.class.isAssignableFrom(aClass);
+        return AuthorRequestDTO.class.isAssignableFrom(aClass);
     }
 
     @Override
@@ -25,13 +25,13 @@ public class CustomUniqueEmailValidator implements Validator {
         if(errors.hasErrors()) {
             return;
         }
-        System.out.println("passei por aqui");
-        FormRequestDTO formRequestDTO = (FormRequestDTO) target;
+
+        AuthorRequestDTO formRequestDTO = (AuthorRequestDTO) target;
 
         Optional<Author> authorExist = authorRepository.findByEmail(formRequestDTO.getEmail());
 
         if(authorExist.isPresent()){
-            errors.rejectValue("email", "Unique.FormRequestDTO.email");
+            errors.rejectValue("email", "Unique.AuthorRequestDTO.email");
         }
     }
 }

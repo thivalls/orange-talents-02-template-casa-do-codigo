@@ -5,7 +5,7 @@ import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
-public class FormRequestDTO {
+public class AuthorRequestDTO {
     @NotBlank
     private String name;
 
@@ -17,7 +17,7 @@ public class FormRequestDTO {
     @Email
     private String email;
 
-    public FormRequestDTO(@NotBlank String name, @NotBlank @Length(max = 400) String description, @NotBlank @Email String email) {
+    public AuthorRequestDTO(@NotBlank String name, @NotBlank @Length(max = 400) String description, @NotBlank @Email String email) {
         this.name = name;
         this.description = description;
         this.email = email;

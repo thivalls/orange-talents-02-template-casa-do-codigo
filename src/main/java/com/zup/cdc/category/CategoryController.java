@@ -1,6 +1,6 @@
-package com.zup.cdc.author;
+package com.zup.cdc.category;
 
-import com.zup.cdc.validators.CustomUniqueEmailValidator;
+import com.zup.cdc.validators.CustomUniqueCategoryValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -15,25 +15,24 @@ import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/authors")
-public class AuthorController {
-
+@RequestMapping("categories")
+public class CategoryController {
     @PersistenceContext
     private EntityManager em;
 
     @Autowired
-    private CustomUniqueEmailValidator customUniqueEmailValidator;
+    private CustomUniqueCategoryValidator customUniqueCategoryValidator;
 
     @InitBinder
     public void init(WebDataBinder binder) {
-        binder.addValidators(customUniqueEmailValidator);
+        binder.addValidators(customUniqueCategoryValidator);
     }
 
     @PostMapping
     @Transactional
-    public String store(@RequestBody @Valid AuthorRequestDTO form) {
-        Author author = form.makeAuthor();
-        em.persist(author);
-        return author.toString();
+    public String store(@RequestBody @Valid CategoryRequestDTO request) {
+        Category category = request.toCategory(request.getName());
+        em.persist(category);
+        return category.toString();
     }
 }
