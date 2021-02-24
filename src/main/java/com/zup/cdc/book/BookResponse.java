@@ -1,5 +1,7 @@
 package com.zup.cdc.book;
 
+import com.zup.cdc.author.Author;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -13,8 +15,7 @@ public class BookResponse {
     private String isbn;
     private LocalDate publishDate;
     private String category;
-    private String authorName;
-    private String authorDescription;
+    private AuthorBookResponse author;
 
     public BookResponse(Book book) {
         this.id = book.getId();
@@ -26,8 +27,7 @@ public class BookResponse {
         this.isbn = book.getIsbn();
         this.publishDate = book.getPublishDate();
         this.category = book.getCategory().getName();
-        this.authorName = book.getAuthor().getName();
-        this.authorDescription = book.getAuthor().getDescription();
+        this.author = new AuthorBookResponse(book.getAuthor());
     }
 
     public Long getId() {
@@ -66,11 +66,7 @@ public class BookResponse {
         return category;
     }
 
-    public String getAuthorName() {
-        return authorName;
-    }
-
-    public String getAuthorDescription() {
-        return authorDescription;
+    public AuthorBookResponse getAuthor() {
+        return author;
     }
 }

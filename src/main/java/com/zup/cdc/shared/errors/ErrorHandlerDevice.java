@@ -9,6 +9,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ public class ErrorHandlerDevice {
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public List<ErrorDefaultDTO> handler(MethodArgumentNotValidException exception) {
+    public List<ErrorDefaultDTO> handlerMethodArgumentNotValidException(MethodArgumentNotValidException exception) {
         List<FieldError> fieldErrors = exception.getBindingResult().getFieldErrors();
         List<ErrorDefaultDTO> errors = new ArrayList<>();
 
@@ -31,5 +32,13 @@ public class ErrorHandlerDevice {
         });
 
         return errors;
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(ResponseStatusException.class)
+    public SimpleErrorDTO handlerResponseStatusException(ResponseStatusException exception) {
+        SimpleErrorDTO error = new SimpleErrorDTO(exception.getMessage());
+
+        return error;
     }
 }
