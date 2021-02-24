@@ -19,6 +19,10 @@ public class Country {
     @Column(unique = true)
     private String name;
 
+    @Deprecated
+    public Country() {
+    }
+
     public Country(@NotBlank String name) {
         this.name = name;
     }
