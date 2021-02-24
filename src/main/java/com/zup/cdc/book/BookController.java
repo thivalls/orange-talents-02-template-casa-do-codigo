@@ -40,6 +40,7 @@ public class BookController {
     @Transactional
     public BookResponse show(@PathVariable("id") Long id) {
         Book book = em.find(Book.class, id);
-        return book.toBookResponse();
+        BookResponse bookResponse = new BookResponse(book);
+        return bookResponse;
     }
 }

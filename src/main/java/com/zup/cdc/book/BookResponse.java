@@ -1,14 +1,5 @@
 package com.zup.cdc.book;
 
-import com.zup.cdc.author.Author;
-import com.zup.cdc.category.Category;
-
-import javax.persistence.Column;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 

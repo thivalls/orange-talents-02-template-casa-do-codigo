@@ -127,7 +127,12 @@ public class Book {
                 '}';
     }
 
-    public BookResponse toBookResponse() {
-        return new BookResponse(this);
-    }
+    /*
+     * Esta situação seria possível, mas seria melhor deixar a responsabilidade do response para o controller
+     * para que esta classe não seja inflada a cada tipo de response diferente que seja necessária no sistema
+     */
+
+    //    public BookResponse toBookResponse() {
+    //        return new BookResponse(this);
+    //    }
 }
