@@ -16,7 +16,7 @@ public class AuthorRequestDTO {
 
     @NotBlank
     @Email
-    @UniqueField(fieldName = "email", domainClass = Author.class)
+    @UniqueField(fieldName = "email", domainClass = Author.class, message = "This author has been already registered")
     private String email;
 
     public AuthorRequestDTO(@NotBlank String name, @NotBlank @Length(max = 400) String description, @NotBlank @Email String email) {

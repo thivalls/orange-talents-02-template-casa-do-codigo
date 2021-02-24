@@ -6,7 +6,7 @@ import javax.validation.constraints.NotBlank;
 
 public class CategoryRequestDTO {
     @NotBlank
-    @UniqueField(fieldName = "name", domainClass = Category.class)
+    @UniqueField(fieldName = "name", domainClass = Category.class, message = "This category has been already registered")
     private String name;
 
     public String getName() {

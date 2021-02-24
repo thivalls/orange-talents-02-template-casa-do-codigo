@@ -1,24 +1,19 @@
 package com.zup.cdc.state;
 
 import com.zup.cdc.country.Country;
-import com.zup.cdc.country.CountryRequest;
 import com.zup.cdc.shared.validators.ExistByField;
-import org.springframework.http.HttpStatus;
-import org.springframework.util.Assert;
-import org.springframework.web.server.ResponseStatusException;
+import com.zup.cdc.shared.validators.UniqueField;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 public class StateRequest {
     @NotBlank
     private String name;
 
     @NotNull
-    @ExistByField(fieldName = "id", domainClass = Country.class)
+    @ExistByField(fieldName = "id", domainClass = Country.class, message = "This country not exist")
     private Long countryId;
 
     public State toState(EntityManager em) {

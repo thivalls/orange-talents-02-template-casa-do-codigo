@@ -6,7 +6,7 @@ import javax.validation.constraints.NotBlank;
 
 public class CountryRequest {
     @NotBlank
-    @UniqueField(fieldName = "name", domainClass = Country.class)
+    @UniqueField(fieldName = "name", domainClass = Country.class, message = "This country has been already registered")
     private String name;
 
     public String getName() {
