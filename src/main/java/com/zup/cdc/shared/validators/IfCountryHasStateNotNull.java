@@ -9,14 +9,17 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Documented
-@Target(ElementType.FIELD)
-@Constraint(validatedBy = {DependentUniqueFieldValidator.class})
+@Target({ElementType.ANNOTATION_TYPE, ElementType.METHOD})
+@Constraint(validatedBy = {IfCountryHasStateNotNullValidator.class})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface DependentUniqueField {
-    String message() default "{custom.dependent.unique.field.validator}";
+public @interface IfCountryHasStateNotNull {
+    String message() default "The state is required for this country";
+
     Class<?>[] groups() default {};
+
     Class<? extends Payload>[] payload() default {};
+
     String fieldName();
-    String dependentFieldName();
+
     Class<?> domainClass();
 }
